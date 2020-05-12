@@ -56,10 +56,14 @@ if __name__ == '__main__':
                 set_html=set_req.text 
                 set_bf = BeautifulSoup(set_html,'lxml')
                 set_finalpage = set_bf.find(title="最后页")
-                if isinstance(set_finalpage.get_text(),str):
+                if set_finalpage != None:
                     set_pagenum = set_finalpage.get_text()
+                else:
+                    set_pagenum = 0
                 pics_url = []
                 for i in range(int(set_pagenum)):
+                    print('here')
+                    '''
                     set_page_url = set_url+str(i+1)
                     set_page_req = requests.get(url=set_page_url,headers=headers)
                     set_page_req.encoding = 'utf-8'
@@ -71,5 +75,5 @@ if __name__ == '__main__':
                 with open(filename, 'w') as f:
                     for item in pics_url:
                         f.write("%s\n" % item)
-                print('finished downloading: ' + filename)
-
+                print('finished downloading: ' + filename)'''
+    print('End of the program')
