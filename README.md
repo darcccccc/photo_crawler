@@ -14,9 +14,10 @@ BeautifulSoup
 
 git clone https://github.com/darcccccc/photo_crawler.git
 
-python crawler.py # to get all images links
+`python crawler.py # to get all images links`
 
-python download.py # to download all image links 
+`python download.py # to download all image links` 
+
 ## To-Do
 
 - Fetch all urls on the website
