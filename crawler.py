@@ -16,9 +16,11 @@ if __name__ == '__main__':
     bf = BeautifulSoup(html, 'lxml')
     targets_url = bf.find_all(class_='fl_link')
     lists_url = []
+    # '93', '349'
+    tag_list = ['400','224','371','235','430','107','403','390','324','389','69','407','96','238','40','313','272','312','19','66','422','98','94','176','387']
     for each in targets_url:
         temp = each.get('href')
-        if isinstance(temp, str) and temp[0] == '/' and temp[1] == 't':
+        if each.get('data-tag') in tag_list and isinstance(temp, str) and temp[0] == '/' and temp[1] == 't':
             lists_url.append('http://www.itmtu.net' + each.get('href'))
 
     # Person Urls
@@ -62,8 +64,6 @@ if __name__ == '__main__':
                     set_pagenum = 0
                 pics_url = []
                 for i in range(int(set_pagenum)):
-                    print('here')
-                    '''
                     set_page_url = set_url+str(i+1)
                     set_page_req = requests.get(url=set_page_url,headers=headers)
                     set_page_req.encoding = 'utf-8'
@@ -75,5 +75,6 @@ if __name__ == '__main__':
                 with open(filename, 'w') as f:
                     for item in pics_url:
                         f.write("%s\n" % item)
-                print('finished downloading: ' + filename)'''
+                print('finished downloading: ' + filename)
+                time.sleep(5)
     print('End of the program')
